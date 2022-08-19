@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dev.backend.entity.Cidade;
 import com.dev.backend.entity.Permissao;
-import com.dev.backend.service.CidadeService;
 import com.dev.backend.service.PermissaoService;
 
 @RestController
