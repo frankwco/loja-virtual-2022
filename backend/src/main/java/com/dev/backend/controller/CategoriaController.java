@@ -14,34 +14,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dev.backend.entity.Estado;
-import com.dev.backend.service.EstadoService;
+import com.dev.backend.entity.Categoria;
+import com.dev.backend.service.CategoriaService;
 
 @RestController
-@RequestMapping("/api/estado")
-public class EstadoController {
+@RequestMapping("/api/categoria")
+public class CategoriaController {
     
     @Autowired
-    private EstadoService estadoService;
+    private CategoriaService categoriaService;
 
     @GetMapping("/")
-    public List<Estado> buscarTodos(){
-       return estadoService.buscarTodos();
+    public List<Categoria> buscarTodos(){
+       return categoriaService.buscarTodos();
     }
 
     @PostMapping("/")
-    public Estado inserir(@RequestBody Estado estado){
-        return estadoService.inserir(estado);
+    public Categoria inserir(@RequestBody Categoria objeto){
+        return categoriaService.inserir(objeto);
     }
 
     @PutMapping("/")
-    public Estado alterar(@RequestBody Estado estado){
-        return estadoService.alterar(estado);
+    public Categoria alterar(@RequestBody Categoria objeto){
+        return categoriaService.alterar(objeto);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id){
-        estadoService.excluir(id);
+        categoriaService.excluir(id);
         return ResponseEntity.ok().build();
     }
 
