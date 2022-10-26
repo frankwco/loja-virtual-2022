@@ -20,6 +20,7 @@ import com.dev.backend.service.EstadoService;
 
 @RestController
 @RequestMapping("/api/estado")
+@CrossOrigin
 public class EstadoController {
     
     @Autowired
