@@ -34,7 +34,7 @@ public class ProdutoImagensController {
     }
 
     @PostMapping("/")
-    public ProdutoImagens inserir(@RequestParam("idProduto") Long idProduto,@RequestParam("file") MultipartFile file){
+    public ProdutoImagens inserir(@RequestParam("idProduto") Long idProduto, @RequestParam("file") MultipartFile file){
         return produtoImagensService.inserir(idProduto,file);
     }
 
