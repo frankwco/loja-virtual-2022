@@ -19,6 +19,11 @@ public class ProdutoService {
         return produtoRepository.findAll();
     }
 
+    public Produto buscarPorId(Long id) {
+        Produto objeto = produtoRepository.findById(id).get();
+        return objeto;
+    }
+
     public Produto inserir(Produto objeto) {
         objeto.setDataCriacao(new Date());
         Produto objetoNovo = produtoRepository.saveAndFlush(objeto);
@@ -34,4 +39,6 @@ public class ProdutoService {
         Produto objeto = produtoRepository.findById(id).get();
         produtoRepository.delete(objeto);
     }
+
+ 
 }

@@ -31,6 +31,11 @@ public class ProdutoController {
        return produtoService.buscarTodos();
     }
 
+    @GetMapping("/{id}")
+    public Produto buscarPorId(@PathVariable("id") Long id){
+       return produtoService.buscarPorId(id);
+    }
+
     @PostMapping("/")
     public Produto inserir(@RequestBody Produto objeto){
         return produtoService.inserir(objeto);
