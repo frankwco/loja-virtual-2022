@@ -13,6 +13,7 @@ import { CategoriaService } from '../../service/cadastros/CategoriaService';
 import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { InputNumber } from 'primereact/inputnumber';
+import { Link } from 'react-router-dom';
 
 
 
@@ -21,9 +22,9 @@ const Produto = () => {
         descricaoCurta: '',
         marca: '',
         categoria: '',
-        descricaoDetalhada:'',
-        valorCusto:'',
-        valorVenda:''
+        descricaoDetalhada: '',
+        valorCusto: '',
+        valorVenda: ''
     };
 
     const [objetos, setObjetos] = useState(null);
@@ -166,6 +167,7 @@ const Produto = () => {
     const actionBodyTemplate = (rowData) => {
         return (
             <div className="actions">
+                <Link to={{ pathname: '/produtoImagens/' + rowData.id }}>   <Button icon="pi pi-image" className="p-button-rounded p-button-primary mr-2" /></Link>
                 <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" onClick={() => editObjeto(rowData)} />
                 <Button icon="pi pi-trash" className="p-button-rounded p-button-warning mt-2" onClick={() => confirmDeleteObjeto(rowData)} />
             </div>
@@ -224,28 +226,28 @@ const Produto = () => {
 
                         <div className="field">
                             <label htmlFor="descricaoDetalhada">Descrição Detalhada</label>
-                            <InputTextarea  id="descricaoDetalhada" value={objeto.descricaoDetalhada} onChange={(e) => onInputChange(e, 'descricaoDetalhada')}  />
-                          
+                            <InputTextarea id="descricaoDetalhada" value={objeto.descricaoDetalhada} onChange={(e) => onInputChange(e, 'descricaoDetalhada')} />
+
                         </div>
 
                         <div className="field">
                             <label htmlFor="marca">Marca</label>
-                            <Dropdown optionLabel="nome" value={objeto.marca} options={marcas} filter onChange={(e) => onInputChange(e, 'marca')} placeholder="Selecione uma Marca"/>
+                            <Dropdown optionLabel="nome" value={objeto.marca} options={marcas} filter onChange={(e) => onInputChange(e, 'marca')} placeholder="Selecione uma Marca" />
                         </div>
 
                         <div className="field">
                             <label htmlFor="categoria">Categoria</label>
-                            <Dropdown optionLabel="nome" value={objeto.categoria} options={categorias} filter onChange={(e) => onInputChange(e, 'categoria')} placeholder="Selecione uma Categoria"/>
+                            <Dropdown optionLabel="nome" value={objeto.categoria} options={categorias} filter onChange={(e) => onInputChange(e, 'categoria')} placeholder="Selecione uma Categoria" />
                         </div>
 
                         <div className="field">
                             <label htmlFor="valorCusto">Valor de Custo</label>
-                            <InputNumber mode="currency" currency="BRL" locale="pt-BT" id="valorCusto" value={objeto.valorCusto} onValueChange={(e) => onInputChange(e, 'valorCusto')} />                         
+                            <InputNumber mode="currency" currency="BRL" locale="pt-BT" id="valorCusto" value={objeto.valorCusto} onValueChange={(e) => onInputChange(e, 'valorCusto')} />
                         </div>
 
                         <div className="field">
                             <label htmlFor="valorVenda">Valor de Venda</label>
-                            <InputNumber mode="currency" currency="BRL" locale="pt-BT" id="valorVenda" value={objeto.valorVenda} onValueChange={(e) => onInputChange(e, 'valorVenda')} />                     
+                            <InputNumber mode="currency" currency="BRL" locale="pt-BT" id="valorVenda" value={objeto.valorVenda} onValueChange={(e) => onInputChange(e, 'valorVenda')} />
                         </div>
 
                     </Dialog>

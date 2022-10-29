@@ -53,6 +53,7 @@ import './assets/demo/flags/flags.css';
 import './assets/demo/Demos.scss';
 import './assets/layout/layout.scss';
 import './App.scss';
+import ProdutoImagens from './pages/cadastros/ProdutoImagens';
 
 
 const App = () => {
@@ -360,6 +361,7 @@ const App = () => {
                     <Route path="/produtos" component={Produto} />
                     <Route path="/permissoes" component={Permissao} />
                     <Route path="/pessoas" component={Pessoa} />
+                    <Route path="/produtoImagens/:id" component={ProdutoImagens} />
 
                 </div>
 

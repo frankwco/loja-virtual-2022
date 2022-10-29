@@ -12,6 +12,10 @@ export class ServiceBase{
         return axios.get(this.url);
     }
 
+    buscarId(id) {
+        return axios.get(this.url+id);
+    }
+
     inserir(objeto) {
         return axios.post(this.url,objeto);
     }
