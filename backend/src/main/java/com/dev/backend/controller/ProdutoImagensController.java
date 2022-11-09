@@ -33,6 +33,12 @@ public class ProdutoImagensController {
        return produtoImagensService.buscarTodos();
     }
 
+    @GetMapping("/produto/{id}")
+    public List<ProdutoImagens> buscarPorProduto(@PathVariable("id") Long idProduto){
+       return produtoImagensService.buscarPorProduto(idProduto);
+    }
+
+
     @PostMapping("/")
     public ProdutoImagens inserir(@RequestParam("idProduto") Long idProduto, @RequestParam("file") MultipartFile file){
         return produtoImagensService.inserir(idProduto,file);
