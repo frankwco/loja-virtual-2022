@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.dev.backend.dto.PessoaClienteRequestDTO;
@@ -20,6 +21,9 @@ public class PessoaGerenciamentoService {
 
     @Autowired
     private EmailService emailService;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     public String solicitarCodigo(String email) {
         Pessoa pessoa = pessoaRepository.findByEmail(email);
@@ -39,7 +43,7 @@ public class PessoaGerenciamentoService {
             Date diferenca = new Date(new Date().getTime() - pessoaBanco.getDataEnvioCodigo().getTime());
             if (diferenca.getTime() / 1000 < 900) {
                 //depois que adicionar o spring security é necessário criptografar a senha!!
-                pessoaBanco.setSenha(pessoa.getSenha());
+                pessoaBanco.setSenha(passwordEncoder.encode(pessoa.getSenha()));
                 pessoaBanco.setCodigoRecuperacaoSenha(null);
                 pessoaRepository.saveAndFlush(pessoaBanco);
                 return "Senha alterada com sucesso!";
