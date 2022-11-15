@@ -2,7 +2,6 @@ package com.dev.backend.service;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.dev.backend.dto.PessoaClienteRequestDTO;
 import com.dev.backend.entity.Pessoa;
-import com.dev.backend.repository.PermissaoRepository;
 import com.dev.backend.repository.PessoaClienteRepository;
-import com.dev.backend.repository.PessoaRepository;
 
 @Service
 public class PessoaClienteService {

@@ -2,7 +2,6 @@ package com.dev.backend.security;
 
 import java.util.Date;
 
-import org.hibernate.boot.model.relational.Loggable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
