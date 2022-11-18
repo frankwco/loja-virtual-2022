@@ -54,6 +54,7 @@ import './assets/demo/Demos.scss';
 import './assets/layout/layout.scss';
 import './App.scss';
 import ProdutoImagens from './pages/cadastros/ProdutoImagens';
+import Login from './pages/Login';
 
 
 const App = () => {
@@ -318,63 +319,77 @@ const App = () => {
         'layout-theme-light': layoutColorMode === 'light'
     });
 
-    return (
-        <div className={wrapperClass} onClick={onWrapperClick}>
-            <Tooltip ref={copyTooltipRef} target=".block-action-copy" position="bottom" content="Copied to clipboard" event="focus" />
+    const Pagina = () => {
+        return (
+            <div className={wrapperClass} onClick={onWrapperClick}>
+                <Tooltip ref={copyTooltipRef} target=".block-action-copy" position="bottom" content="Copied to clipboard" event="focus" />
 
-            <AppTopbar onToggleMenuClick={onToggleMenuClick} layoutColorMode={layoutColorMode}
-                mobileTopbarMenuActive={mobileTopbarMenuActive} onMobileTopbarMenuClick={onMobileTopbarMenuClick} onMobileSubTopbarMenuClick={onMobileSubTopbarMenuClick} />
+                <AppTopbar onToggleMenuClick={onToggleMenuClick} layoutColorMode={layoutColorMode}
+                    mobileTopbarMenuActive={mobileTopbarMenuActive} onMobileTopbarMenuClick={onMobileTopbarMenuClick} onMobileSubTopbarMenuClick={onMobileSubTopbarMenuClick} />
 
-            <div className="layout-sidebar" onClick={onSidebarClick}>
-                <AppMenu model={menu} onMenuItemClick={onMenuItemClick} layoutColorMode={layoutColorMode} />
-            </div>
-
-            <div className="layout-main-container">
-                <div className="layout-main">
-                    <Route path="/" exact render={() => <Dashboard colorMode={layoutColorMode} location={location} />} />
-                    <Route path="/formlayout" component={FormLayoutDemo} />
-                    <Route path="/input" component={InputDemo} />
-                    <Route path="/floatlabel" component={FloatLabelDemo} />
-                    <Route path="/invalidstate" component={InvalidStateDemo} />
-                    <Route path="/button" component={ButtonDemo} />
-                    <Route path="/table" component={TableDemo} />
-                    <Route path="/list" component={ListDemo} />
-                    <Route path="/tree" component={TreeDemo} />
-                    <Route path="/panel" component={PanelDemo} />
-                    <Route path="/overlay" component={OverlayDemo} />
-                    <Route path="/media" component={MediaDemo} />
-                    <Route path="/menu" component={MenuDemo} />
-                    <Route path="/messages" component={MessagesDemo} />
-                    <Route path="/blocks" component={BlocksDemo} />
-                    <Route path="/icons" component={IconsDemo} />
-                    <Route path="/file" component={FileDemo} />
-                    <Route path="/chart" render={() => <ChartDemo colorMode={layoutColorMode} location={location} />} />
-                    <Route path="/misc" component={MiscDemo} />
-                    <Route path="/timeline" component={TimelineDemo} />
-                    <Route path="/crud" component={Crud} />
-                    <Route path="/empty" component={EmptyPage} />
-                    <Route path="/documentation" component={Documentation} />
-                    <Route path="/estados" component={Estado} />
-                    <Route path="/cidades" component={Cidade} />
-                    <Route path="/marcas" component={Marca} />
-                    <Route path="/categorias" component={Categoria} />
-                    <Route path="/produtos" component={Produto} />
-                    <Route path="/permissoes" component={Permissao} />
-                    <Route path="/pessoas" component={Pessoa} />
-                    <Route path="/produtoImagens/:id" component={ProdutoImagens} />
-
+                <div className="layout-sidebar" onClick={onSidebarClick}>
+                    <AppMenu model={menu} onMenuItemClick={onMenuItemClick} layoutColorMode={layoutColorMode} />
                 </div>
 
-                <AppFooter layoutColorMode={layoutColorMode} />
+                <div className="layout-main-container">
+                    <div className="layout-main">
+                        <Route path="/" exact render={() => <Dashboard colorMode={layoutColorMode} location={location} />} />
+                        <Route path="/formlayout" component={FormLayoutDemo} />
+                        <Route path="/input" component={InputDemo} />
+                        <Route path="/floatlabel" component={FloatLabelDemo} />
+                        <Route path="/invalidstate" component={InvalidStateDemo} />
+                        <Route path="/button" component={ButtonDemo} />
+                        <Route path="/table" component={TableDemo} />
+                        <Route path="/list" component={ListDemo} />
+                        <Route path="/tree" component={TreeDemo} />
+                        <Route path="/panel" component={PanelDemo} />
+                        <Route path="/overlay" component={OverlayDemo} />
+                        <Route path="/media" component={MediaDemo} />
+                        <Route path="/menu" component={MenuDemo} />
+                        <Route path="/messages" component={MessagesDemo} />
+                        <Route path="/blocks" component={BlocksDemo} />
+                        <Route path="/icons" component={IconsDemo} />
+                        <Route path="/file" component={FileDemo} />
+                        <Route path="/chart" render={() => <ChartDemo colorMode={layoutColorMode} location={location} />} />
+                        <Route path="/misc" component={MiscDemo} />
+                        <Route path="/timeline" component={TimelineDemo} />
+                        <Route path="/crud" component={Crud} />
+                        <Route path="/empty" component={EmptyPage} />
+                        <Route path="/documentation" component={Documentation} />
+                        <Route path="/estados" component={Estado} />
+                        <Route path="/cidades" component={Cidade} />
+                        <Route path="/marcas" component={Marca} />
+                        <Route path="/categorias" component={Categoria} />
+                        <Route path="/produtos" component={Produto} />
+                        <Route path="/permissoes" component={Permissao} />
+                        <Route path="/pessoas" component={Pessoa} />
+                        <Route path="/produtoImagens/:id" component={ProdutoImagens} />
+                        <Route path="/login" component={Login} />
+
+                    </div>
+
+                    <AppFooter layoutColorMode={layoutColorMode} />
+                </div>
+
+                <AppConfig rippleEffect={ripple} onRippleEffect={onRipple} inputStyle={inputStyle} onInputStyleChange={onInputStyleChange}
+                    layoutMode={layoutMode} onLayoutModeChange={onLayoutModeChange} layoutColorMode={layoutColorMode} onColorModeChange={onColorModeChange} />
+
+                <CSSTransition classNames="layout-mask" timeout={{ enter: 200, exit: 200 }} in={mobileMenuActive} unmountOnExit>
+                    <div className="layout-mask p-component-overlay"></div>
+                </CSSTransition>
+
             </div>
+        );
+    }
 
-            <AppConfig rippleEffect={ripple} onRippleEffect={onRipple} inputStyle={inputStyle} onInputStyleChange={onInputStyleChange}
-                layoutMode={layoutMode} onLayoutModeChange={onLayoutModeChange} layoutColorMode={layoutColorMode} onColorModeChange={onColorModeChange} />
-
-            <CSSTransition classNames="layout-mask" timeout={{ enter: 200, exit: 200 }} in={mobileMenuActive} unmountOnExit>
-                <div className="layout-mask p-component-overlay"></div>
-            </CSSTransition>
-
+    return (
+        <div>
+            {
+                false ?
+                    <Pagina />
+                    :
+                    <Login />
+            }
         </div>
     );
 
