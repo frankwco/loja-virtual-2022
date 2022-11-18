@@ -3,7 +3,7 @@ import { ServiceBase } from '../cadastros/ServiceBase';
 
 export class LoginService extends ServiceBase {
 
-    CHAVE_TOKEN = "";
+    CHAVE_TOKEN = "@token_loja";
 
 constructor(){
     super("pessoa-gerenciamento");
