@@ -10,7 +10,7 @@ constructor(){
 }
 
 login(email, senha, mensagemErro){
-    axios.post(this.url+"login",{'email':email, 'senha':senha}).then(res=>{
+    this.axiosInstance.post(this.url+"login",{'email':email, 'senha':senha}).then(res=>{
         localStorage.setItem(this.CHAVE_TOKEN, res.data.token);
         window.location.href = "/";
     }).catch(error=>{
@@ -19,11 +19,15 @@ login(email, senha, mensagemErro){
 }
 
 autenticado(){
-    return localStorage.getItem(this.CHAVE_TOKEN)!=null;
+    return this.getToken()!=null;
 }
 
 sair(){
     localStorage.removeItem(this.CHAVE_TOKEN);
+}
+
+getToken(){
+    return localStorage.getItem(this.CHAVE_TOKEN);
 }
 
 }

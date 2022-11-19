@@ -20,7 +20,7 @@ import io.jsonwebtoken.UnsupportedJwtException;
 public class JwtUtil {
     
     private String chaveSecreta = "chaveSecretaParaGerarToken";
-    private int validadeToken=900000;
+    private int validadeToken=9000;
     private static final Logger logger= LoggerFactory.getLogger(JwtUtil.class);
 
     public String gerarTokenUsername(Pessoa pessoa){

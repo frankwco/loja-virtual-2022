@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { ServiceBase } from './ServiceBase';
 
 export class ProdutoImagensService extends ServiceBase {
@@ -16,11 +15,11 @@ uploadImagens(obj){
             'content-type':'multipart/form-data'
         }
     }
-    return axios.post(this.url, formData, config);
+    return this.axiosInstance.post(this.url, formData, config);
 }
 
 buscarPorProduto(idProduto){
-    return axios.get(this.url+"produto/"+idProduto);
+    return this.axiosInstance.get(this.url+"produto/"+idProduto);
 }
 
 }
