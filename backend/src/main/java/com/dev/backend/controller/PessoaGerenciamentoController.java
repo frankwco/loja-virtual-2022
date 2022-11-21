@@ -48,8 +48,9 @@ public class PessoaGerenciamentoController {
       SecurityContextHolder.getContext().setAuthentication(authentication);
       Pessoa autenticado = (Pessoa) authentication.getPrincipal();
       String token = jwtUtil.gerarTokenUsername(autenticado);
-      HashMap<String, String> map = new HashMap<>();
+      HashMap<String, Object> map = new HashMap<>();
       map.put("token", token);
+      map.put("permissoes", autenticado.getAuthorities());
       return ResponseEntity.ok(map);
 
     }
